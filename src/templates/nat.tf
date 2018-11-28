@@ -5,7 +5,7 @@ resource "aws_instance" "nat1" {
     "${aws_security_group.nat.id}",
     "${aws_security_group.ssh.id}"
   ]
-  subnet_id                   = "${var.public_subnet1_cidr_block}"
+  subnet_id                   = "${aws_subnet.public_subnet1.id}"
   associate_public_ip_address = true
   disable_api_termination     = true
   source_dest_check           = false
@@ -19,7 +19,7 @@ resource "aws_instance" "nat2" {
     "${aws_security_group.nat.id}",
     "${aws_security_group.ssh.id}"
   ]
-  subnet_id                   = "${var.public_subnet2_cidr_block}"
+  subnet_id                   = "${aws_subnet.public_subnet2.id}"
   associate_public_ip_address = true
   disable_api_termination     = true
   source_dest_check           = false

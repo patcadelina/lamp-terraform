@@ -2,7 +2,7 @@ resource "aws_instance" "db_master" {
   ami                     = "${var.amis["mysql_server"]}"
   instance_type           = "${var.instance_types["mysql_server_master"]}"
   vpc_security_group_ids  = ["${aws_security_group.mysql_server.id}"]
-  subnet_id               = "${var.private_subnet1_cidr_block}"
+  subnet_id               = "${aws_subnet.private_subnet1.id}"
   disable_api_termination = true
   monitoring              = true
   tags                    = "${var.tags}"
@@ -12,7 +12,7 @@ resource "aws_instance" "db_slave1" {
   ami                     = "${var.amis["mysql_server"]}"
   instance_type           = "${var.instance_types["mysql_server_slave"]}"
   vpc_security_group_ids  = ["${aws_security_group.mysql_server.id}"]
-  subnet_id               = "${var.private_subnet2_cidr_block}"
+  subnet_id               = "${aws_subnet.private_subnet2.id}"
   ebs_optimized           = true
   disable_api_termination = true
   monitoring              = true

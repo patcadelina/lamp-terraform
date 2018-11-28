@@ -45,8 +45,8 @@ resource "aws_autoscaling_group" "web_server" {
   min_size             = "${var.asg_min_size}"
   max_size             = "${var.asg_max_size}"
   vpc_zone_identifier  = [
-    "${var.private_subnet1_cidr_block}",
-    "${var.private_subnet2_cidr_block}"
+    "${aws_subnet.private_subnet1.id}",
+    "${aws_subnet.private_subnet2.id}"
   ]
 
   lifecycle {
