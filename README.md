@@ -16,3 +16,6 @@ This project aims to duplicate AWS infrastructure across environments.
 Templates contain the infrastructure blueprint.
 ## Environments
 Environments are targets for infrastructure provisioning.
+## Development
+- Changes to infrastructure must be done from `templates` directory.
+- Once changes are ready for use, these should be symbolically linked into the environments directory. To do this run `cd src/environment/<env>; ln -s ../../templates/* ./`.
