@@ -40,7 +40,7 @@ resource "aws_internet_gateway" "igw" {
   tags   = "${var.tags}"
 }
 
-resource "aws_route_table" "rt1" {
+resource "aws_route_table" "main" {
   vpc_id = "${aws_vpc.main.id}"
   
   route {
@@ -51,14 +51,14 @@ resource "aws_route_table" "rt1" {
   tags   = "${var.tags}"
 }
 
-resource "aws_route_table_association" "rta1" {
+resource "aws_route_table_association" "public1" {
   subnet_id      = "${aws_subnet.public_subnet1.id}"
-  route_table_id = "${aws_route_table.rt1.id}"
+  route_table_id = "${aws_route_table.main.id}"
 }
 
-resource "aws_route_table_association" "rta2" {
+resource "aws_route_table_association" "public2" {
   subnet_id      = "${aws_subnet.public_subnet2.id}"
-  route_table_id = "${aws_route_table.rt1.id}"
+  route_table_id = "${aws_route_table.main.id}"
 }
 
 resource "aws_network_acl" "public" {

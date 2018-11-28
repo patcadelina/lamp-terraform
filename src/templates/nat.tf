@@ -71,28 +71,32 @@ resource "aws_security_group" "ssh" {
   }
 }
 
-resource "aws_route_table" "nat" {
+resource "aws_route_table" "nat1" {
   vpc_id = "${aws_vpc.main.id}"
+  tags   = "${var.tags}"
   
   route {
     cidr_block  = "0.0.0.0/0"
     instance_id = "${aws_instance.nat1.id}"
   }
-  
+}
+
+resource "aws_route_table" "nat2" {
+  vpc_id = "${aws_vpc.main.id}"
+  tags   = "${var.tags}"
+
   route {
     cidr_block  = "0.0.0.0/0"
     instance_id = "${aws_instance.nat2.id}"
   }
-
-  tags   = "${var.tags}"
 }
 
 resource "aws_route_table_association" "nat1" {
   subnet_id      = "${aws_subnet.private_subnet1.id}"
-  route_table_id = "${aws_route_table.nat.id}"
+  route_table_id = "${aws_route_table.nat1.id}"
 }
 
 resource "aws_route_table_association" "nat2" {
   subnet_id      = "${aws_subnet.private_subnet2.id}"
-  route_table_id = "${aws_route_table.nat.id}"
+  route_table_id = "${aws_route_table.nat2.id}"
 }
