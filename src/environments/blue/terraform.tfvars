@@ -17,8 +17,8 @@ amis = {
   web_server   = "ami-015a01e69314a30cd"
 }
 instance_types = {
-  mysql_server_master = "i3.xlarge"
-  mysql_server_slave  = "i3.xlarge"
+  mysql_server_master = "m5.large"
+  mysql_server_slave  = "m5.large"
   nat_server          = "m5.large"
   web_server          = "m5.large"
 }
