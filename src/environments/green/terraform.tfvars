@@ -1,15 +1,15 @@
 tags = {
-  environment = "development"
+  environment = "green"
 }
 
-private_subnet1_cidr_block = "10.0.2.0/24"
-private_subnet2_cidr_block = "10.0.4.0/24"
-public_subnet1_cidr_block = "10.0.1.0/24"
-public_subnet2_cidr_block = "10.0.3.0/24"
+private_subnet1_cidr_block = "172.16.2.0/24"
+private_subnet2_cidr_block = "172.16.4.0/24"
+public_subnet1_cidr_block = "172.16.1.0/24"
+public_subnet2_cidr_block = "172.16.3.0/24"
 
-region = "eu-central-1"
+region = "eu-west-1"
 
-vpc_cidr_block = "10.0.0.0/16"
+vpc_cidr_block = "172.16.0.0/16"
 
 amis = {
   mysql_server = "ami-0a3e4c3998bcf1e8c"

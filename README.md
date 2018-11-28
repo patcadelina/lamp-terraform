@@ -9,7 +9,9 @@ aws_secret_access_key=${SECRET_ACCESS_KEY}
 ```
 
 # Project Structure
-This project aims to duplicate AWS infrastructure across environments. To create or update an environment, run `terraform apply` from the target directory (i.e. src/environments/production).
+This project aims to duplicate AWS infrastructure across environments.
+- To initialize an environment, run `terraform init` from the target directory (i.e. src/environments/blue).
+- To create or update an environment, run `terraform apply` from the target directory (i.e. src/environments/development).
 ## Templates
 Templates contain the infrastructure blueprint.
 ## Environments
