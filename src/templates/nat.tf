@@ -1,13 +1,13 @@
 resource "aws_instance" "nat1" {
   ami                         = "${var.amis["nat_server"]}"
   instance_type               = "${var.instance_types["nat_server"]}"
+  key_name                    = "${var.key_name}"
   vpc_security_group_ids      = [
     "${aws_security_group.nat.id}",
     "${aws_security_group.ssh.id}"
   ]
   subnet_id                   = "${aws_subnet.public_subnet1.id}"
   associate_public_ip_address = true
-  disable_api_termination     = true
   source_dest_check           = false
   tags                        = "${var.tags}"
 }
@@ -15,13 +15,13 @@ resource "aws_instance" "nat1" {
 resource "aws_instance" "nat2" {
   ami                         = "${var.amis["nat_server"]}"
   instance_type               = "${var.instance_types["nat_server"]}"
+  key_name                    = "${var.key_name}"
   vpc_security_group_ids      = [
     "${aws_security_group.nat.id}",
     "${aws_security_group.ssh.id}"
   ]
   subnet_id                   = "${aws_subnet.public_subnet2.id}"
   associate_public_ip_address = true
-  disable_api_termination     = true
   source_dest_check           = false
   tags                        = "${var.tags}"
 }

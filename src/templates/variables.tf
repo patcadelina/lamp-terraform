@@ -9,6 +9,10 @@ variable "region" {
   default = "eu-west-1"
 }
 
+variable "key_name" {
+  default = "pat"
+}
+
 variable "vpc_cidr_block" {}
 
 variable "amis" { type = "map" }

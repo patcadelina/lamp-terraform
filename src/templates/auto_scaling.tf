@@ -1,6 +1,7 @@
 resource "aws_launch_configuration" "web_server" {
   image_id        = "${var.amis["web_server"]}"
   instance_type   = "${var.instance_types["web_server"]}"
+  key_name        = "${var.key_name}"
   security_groups = ["${aws_security_group.web_server.id}"]
   
   lifecycle {
