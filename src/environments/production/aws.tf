@@ -1,1 +1,0 @@
-../../templates/aws.tf

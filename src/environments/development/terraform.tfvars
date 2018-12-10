@@ -13,7 +13,7 @@ vpc_cidr_block = "10.0.0.0/16"
 
 amis = {
   mysql_server = "ami-0a3e4c3998bcf1e8c"
-  nat_server   = "ami-024107e3e3217a248"
+  nat_server   = "ami-0f9b91e3fe33b644c"
   web_server   = "ami-015a01e69314a30cd"
 }
 instance_types = {

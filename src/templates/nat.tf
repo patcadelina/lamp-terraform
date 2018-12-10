@@ -3,6 +3,7 @@ resource "aws_instance" "nat1" {
   instance_type               = "${var.instance_types["nat_server"]}"
   key_name                    = "${var.key_name}"
   vpc_security_group_ids      = [
+    "${aws_security_group.nat_inbound.id}",
     "${aws_security_group.nat.id}",
     "${aws_security_group.ssh.id}"
   ]
@@ -17,6 +18,7 @@ resource "aws_instance" "nat2" {
   instance_type               = "${var.instance_types["nat_server"]}"
   key_name                    = "${var.key_name}"
   vpc_security_group_ids      = [
+    "${aws_security_group.nat_inbound.id}",
     "${aws_security_group.nat.id}",
     "${aws_security_group.ssh.id}"
   ]
@@ -24,6 +26,33 @@ resource "aws_instance" "nat2" {
   associate_public_ip_address = true
   source_dest_check           = false
   tags                        = "${var.tags}"
+}
+
+resource "aws_security_group" "nat_inbound" {
+  vpc_id = "${aws_vpc.main.id}"
+  tags   = "${var.tags}"
+
+  ingress {
+    description     = "HTTP"
+    from_port       = 80
+    to_port         = 80
+    protocol        = "tcp"
+    security_groups = [
+      "${aws_security_group.mysql_server.id}",
+      "${aws_security_group.web_server.id}"
+    ]
+  }
+
+  ingress {
+    description     = "HTTPS"
+    from_port       = 443
+    to_port         = 443
+    protocol        = "tcp"
+    security_groups = [
+      "${aws_security_group.mysql_server.id}",
+      "${aws_security_group.web_server.id}"
+    ]
+  }
 }
 
 resource "aws_security_group" "nat" {
