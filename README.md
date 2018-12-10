@@ -18,4 +18,8 @@ Templates contain the infrastructure blueprint.
 Environments are targets for infrastructure provisioning.
 ## Development
 - Changes to infrastructure must be done from `templates` directory.
-- Once changes are ready for use, these should be symbolically linked into the environments directory. To do this run `cd src/environment/<env>; ln -s ../../templates/* ./`.
+- Once changes are ready for use, these should be symbolically linked into the environments directory. To do this run `cd src/environment/<env>; ln -s ../../templates/* ./.`
+## Running
+- It is expected that AMIs have been generated from the `packer` project. Update the environment `terraform.tfvars` file with the appropriate AMI ids.
+- Change directory to the target environment and run `terraform apply`.
+
